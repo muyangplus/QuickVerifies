@@ -14,7 +14,7 @@ VideoCapture capture;
 Mat capt, image;
 
 /*
- * BrennerÌİ¶È·½·¨
+ * Brenner
  *
  * Inputs:
  * @param image:

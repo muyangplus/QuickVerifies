@@ -41,8 +41,8 @@ std::vector<float> MaskAlgo::recognize(cv::Mat capt) {
 		info.push_back(r.y * capt.rows);		//y
 		info.push_back(r.width * capt.cols);	//w
 		info.push_back(r.height * capt.rows);	//h
-		info.push_back(scores[i]);				//¿ÉÄÜĞÔ
-		info.push_back(classes[i]);				//ÊÇ·ñÅå´÷¿ÚÕÖ
+		info.push_back(scores[i]);				//å¯èƒ½æ€§
+		info.push_back(classes[i]);				//æ˜¯å¦ä½©æˆ´å£ç½©
 	}
 	return info;
 }
@@ -244,4 +244,5 @@ std::vector<int> MaskAlgo::single_class_non_max_suppression(std::vector<cv::Rect
 	keep_idxs = do_nms(infos, 0.7, 'u');
 	return keep_idxs;
 }
+
 

@@ -1,6 +1,7 @@
 # Program
-data/registFace/*
-data/temp/*
+
+# Privacy
+*.jpg
 
 # IDE
 .vs
@@ -38,3 +39,7 @@ out
 *.exe
 *.out
 *.app
+
+*.ilk
+*.pdb
+*.manifest

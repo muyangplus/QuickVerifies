@@ -10,8 +10,8 @@ cv::TickMeter tm;
 cv::Mat capt;
 
 /*
- * ÉãÏñÍ·³õÊ¼»¯
- * @author ĞìÕÕ½Ü
+ * æ‘„åƒå¤´åˆå§‹åŒ–
+ * @author å¾ç…§æ°
  * @date 2022/5/30
  */
 int Capture::initCapture(int capture_id, bool debug) {
@@ -20,24 +20,24 @@ int Capture::initCapture(int capture_id, bool debug) {
 		return 0;
 	}
 	if (debug) {
-		capture.set(cv::CAP_PROP_SETTINGS, 1);			//µ¯³öÉèÖÃ½çÃæ
+		capture.set(cv::CAP_PROP_SETTINGS, 1);			//å¼¹å‡ºè®¾ç½®ç•Œé¢
 	}
-	capture.set(cv::CAP_PROP_FRAME_WIDTH, 1920);		//¿í¶È 640
-	capture.set(cv::CAP_PROP_FRAME_HEIGHT, 1080);		//¸ß¶È 480
-	//capture.set(cv::CAP_PROP_FPS, 0);					//Ö¡ÂÊ 0
-	//capture.set(cv::CAP_PROP_BRIGHTNESS, 0);			//ÁÁ¶È 0
-	//capture.set(cv::CAP_PROP_CONTRAST, 32);			//¶Ô±È¶È 32
-	//capture.set(cv::CAP_PROP_SATURATION, 56);			//±¥ºÍ¶È 56
-	//capture.set(cv::CAP_PROP_HUE, 0);					//É«µ÷ 0
-	//capture.set(cv::CAP_PROP_EXPOSURE, -6);			//ÆØ¹â -6
-	//capture.set(cv::CAP_PROP_FRAME_COUNT, -1);		//×ÜÖ¡Êı -1
+	capture.set(cv::CAP_PROP_FRAME_WIDTH, 1920);		//å®½åº¦ 640
+	capture.set(cv::CAP_PROP_FRAME_HEIGHT, 1080);		//é«˜åº¦ 480
+	//capture.set(cv::CAP_PROP_FPS, 0);					//å¸§ç‡ 0
+	//capture.set(cv::CAP_PROP_BRIGHTNESS, 0);			//äº®åº¦ 0
+	//capture.set(cv::CAP_PROP_CONTRAST, 32);			//å¯¹æ¯”åº¦ 32
+	//capture.set(cv::CAP_PROP_SATURATION, 56);			//é¥±å’Œåº¦ 56
+	//capture.set(cv::CAP_PROP_HUE, 0);					//è‰²è°ƒ 0
+	//capture.set(cv::CAP_PROP_EXPOSURE, -6);			//æ›å…‰ -6
+	//capture.set(cv::CAP_PROP_FRAME_COUNT, -1);		//æ€»å¸§æ•° -1
 	//capture.set(cv::CAP_PROP_FOCUS, 85);
 	return 1;
 }
 
 /*
- * ÈËÁ³ÑéÖ¤
- * @author ĞìÕÕ½Ü
+ * äººè„¸éªŒè¯
+ * @author å¾ç…§æ°
  * @date 2022/6/3
  */
 int Capture::recognition(int capture_id, bool debug) {
@@ -46,14 +46,14 @@ int Capture::recognition(int capture_id, bool debug) {
 	bool QRcode_on = false;
 	int unknown_times = 0;
 	int fontFace = cv::FONT_HERSHEY_COMPLEX;
-	double fontScale = 0.5;       //×ÖÌåËõ·Å±È
+	double fontScale = 0.5;       //å­—ä½“ç¼©æ”¾æ¯”
 	int thickness = 1;
 	int baseLine = 0;
 	while (char(cv::waitKey(1)) != ' ') {
 		tm.start();
 		capture >> capt;
 		cv::resize(capt, capt, { 640,480 });
-		cv::flip(capt, capt, 1);	// ¾µÏñ
+		cv::flip(capt, capt, 1);	// é•œåƒ
 		if (debug) {
 			cv::imwrite("./debug.jpg", capt);
 			//capt = cv::imread("./debug.jpg");
@@ -61,7 +61,7 @@ int Capture::recognition(int capture_id, bool debug) {
 
 		std::vector<float> mask_result = MaskAlgo::recognize(capt);
 		if (mask_result.empty()) {
-			// Èç¹û½á¹ûÎª¿Õ£¬ËµÃ÷Ã»ÓĞÕÒµ½ÈËÁ³
+			// å¦‚æœç»“æœä¸ºç©ºï¼Œè¯´æ˜æ²¡æœ‰æ‰¾åˆ°äººè„¸
 			tm.stop();
 			putText(capt, cv::format("FPS : %.2f", (float)tm.getFPS()), cv::Point(0, 15), cv::FONT_HERSHEY_COMPLEX, 0.5, cv::Scalar(0, 0, 255), 1);
 			cv::imshow("capt", capt);
@@ -94,7 +94,7 @@ int Capture::recognition(int capture_id, bool debug) {
 		}
 
 		if (infoList.empty()) {
-			//Èç¹ûÃ»ÓĞÊ¶±ğµ½ÈË
+			//å¦‚æœæ²¡æœ‰è¯†åˆ«åˆ°äºº
 			tm.stop();
 			putText(capt, cv::format("FPS : %.2f", (float)tm.getFPS()), cv::Point(0, 15), cv::FONT_HERSHEY_COMPLEX, 0.5, cv::Scalar(0, 0, 255), 1);
 			cv::imshow("capt", capt);
@@ -154,8 +154,8 @@ int Capture::recognition(int capture_id, bool debug) {
 }
 
 /*
- * ÅÄÕÅÕÕ :)
- * @author ĞìÕÕ½Ü
+ * æ‹å¼ ç…§ :)
+ * @author å¾ç…§æ°
  * @date 2022/7/16
  */
 cv::Mat Capture::getCapt() {

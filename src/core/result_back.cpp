@@ -4,29 +4,29 @@
 #include "src/core/result_back.h"
 
 void ResultBack::too_far() {
-	std::cout << "ÄúÀëÉèÏëÍ·Ì«Ô¶ÁË£¬Çë¿¿½üÉãÏñÍ·!\n";
+	std::cout << "æ‚¨ç¦»è®¾æƒ³å¤´å¤ªè¿œäº†ï¼Œè¯·é è¿‘æ‘„åƒå¤´!\n";
 }
 
 void ResultBack::no_mask() {
-	std::cout << "ÒßÇé·À¿ØÆÚ¼ä£¬Åå´÷¿ÚÕÖ!\n";
+	std::cout << "ç–«æƒ…é˜²æŽ§æœŸé—´ï¼Œä½©æˆ´å£ç½©!\n";
 }
 
 void ResultBack::show_your_QRcode() {
-	std::cout << "ÇëÄú³öÊ¾ÄúµÄ½¡¿µÂë£¡\n";
+	std::cout << "è¯·æ‚¨å‡ºç¤ºæ‚¨çš„å¥åº·ç ï¼\n";
 }
 
 void ResultBack::green_QRcode() {
-	std::cout << "½¡¿µÂëÎªÂÌÉ«£¡\n";
+	std::cout << "å¥åº·ç ä¸ºç»¿è‰²ï¼\n";
 }
 
 void ResultBack::yellow_QRcode() {
-	std::cout << "½¡¿µÂëÎª»ÆÉ«£¡\n";
+	std::cout << "å¥åº·ç ä¸ºé»„è‰²ï¼\n";
 }
 
 void ResultBack::red_QRcode() {
-	std::cout << "½¡¿µÂëÎªºìÉ«£¡\n";
+	std::cout << "å¥åº·ç ä¸ºçº¢è‰²ï¼\n";
 }
 
 void ResultBack::error_QRcode() {
-	std::cout << "´íÎóµÄ½¡¿µÂëÑÕÉ«£¡\n";
+	std::cout << "é”™è¯¯çš„å¥åº·ç é¢œè‰²ï¼\n";
 }

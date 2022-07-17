@@ -1,4 +1,4 @@
-﻿// C++
+// C++
 #include <iostream>
 // OpenCV
 #include <opencv.hpp>

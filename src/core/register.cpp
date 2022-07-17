@@ -8,38 +8,38 @@
 #include "src/core/face_recognize.h"
 
 /*
- * ÑÕÉ«ÅĞ¶Ï
+ * é¢œè‰²åˆ¤æ–­
  * @prem 0 : Green
  * @prem 1 : Yellow
  * @prem 2 : Red
  * @prem 3 : ERROR
- * @author ĞìÕÕ½Ü
+ * @author å¾ç…§æ°
  * @date 2022/5/26
  */
 int Register::getColor(cv::Mat image) {
-	int num[4] = { 0,0,0,0 };			//ÂÌ,»Æ,ºì,°×
+	int num[4] = { 0,0,0,0 };			//ç»¿,é»„,çº¢,ç™½
 	for (int i = 0; i < image.rows; i++) {
-		for (int j = 0; j < image.cols; j++) {   //±éÀúÍ¼Æ¬µÄÃ¿Ò»¸öÏñËØµã
-			//¶Ô¸ÃÏñËØÊÇ·ñÎªÂÌÉ«½øĞĞÅĞ¶Ï
+		for (int j = 0; j < image.cols; j++) {   //éå†å›¾ç‰‡çš„æ¯ä¸€ä¸ªåƒç´ ç‚¹
+			//å¯¹è¯¥åƒç´ æ˜¯å¦ä¸ºç»¿è‰²è¿›è¡Œåˆ¤æ–­
 			//(image.at<cv::Vec3b>(i, j)[0] >= 200 && image.at<cv::Vec3b>(i, j)[1] >= 200 && image.at<cv::Vec3b>(i, j)[2] >= 0)
 			if (image.at<cv::Vec3b>(i, j)[0] <= 100
 				&& image.at<cv::Vec3b>(i, j)[1] >= 100 && image.at<cv::Vec3b>(i, j)[1] <= 200
 				&& image.at<cv::Vec3b>(i, j)[2] <= 100) {
 				num[0]++;
 			}
-			//¶Ô¸ÃÏñËØÊÇ·ñÎª»ÆÉ«½øĞĞÅĞ¶Ï
+			//å¯¹è¯¥åƒç´ æ˜¯å¦ä¸ºé»„è‰²è¿›è¡Œåˆ¤æ–­
 			if (image.at<cv::Vec3b>(i, j)[0] >= 80 && image.at<cv::Vec3b>(i, j)[0] <= 200
 				&& image.at<cv::Vec3b>(i, j)[1] >= 180
 				&& image.at<cv::Vec3b>(i, j)[2] >= 200) {
 				num[1]++;
 			}
-			//¶Ô¸ÃÏñËØÊÇ·ñÎªºìÉ«½øĞĞÅĞ¶Ï
+			//å¯¹è¯¥åƒç´ æ˜¯å¦ä¸ºçº¢è‰²è¿›è¡Œåˆ¤æ–­
 			if (image.at<cv::Vec3b>(i, j)[0] <= 200
 				&& image.at<cv::Vec3b>(i, j)[1] <= 200
 				&& image.at<cv::Vec3b>(i, j)[2] >= 180) {
 				num[2]++;
 			}
-			//¶Ô¸ÃÏñËØÊÇ·ñÎª°×É«½øĞĞÅĞ¶Ï
+			//å¯¹è¯¥åƒç´ æ˜¯å¦ä¸ºç™½è‰²è¿›è¡Œåˆ¤æ–­
 			if (image.at<cv::Vec3b>(i, j)[0] >= 200
 				&& image.at<cv::Vec3b>(i, j)[1] >= 200
 				&& image.at<cv::Vec3b>(i, j)[2] >= 200) {
@@ -65,8 +65,8 @@ int Register::getColor(cv::Mat image) {
 }
 
 /*
- * ¶şÎ¬Âë¶¨Î»
- * @author ĞìÕÕ½Ü
+ * äºŒç»´ç å®šä½
+ * @author å¾ç…§æ°
  * @date 2022/5/3
  */
 cv::Mat Register::getQRcode(cv::Mat& img) {
@@ -95,8 +95,8 @@ cv::Mat Register::getQRcode(cv::Mat& img) {
 
 //int items = 210;
 /*
- * ÈËÁ³×¢²á£¨½¡¿µÂë×¢²á£©
- * @author ĞìÕÕ½Ü
+ * äººè„¸æ³¨å†Œï¼ˆå¥åº·ç æ³¨å†Œï¼‰
+ * @author å¾ç…§æ°
  * @date 2022/5/25
  */
 int Register::registFaceByQRcode(cv::Mat face) {
@@ -110,7 +110,7 @@ int Register::registFaceByQRcode(cv::Mat face) {
 			QRcapture >> capt_qr;
 		}
 		resize(capt_qr, capt_qr, { 640,480 });
-		flip(capt_qr, capt_qr, 1);	// ¾µÏñ
+		flip(capt_qr, capt_qr, 1);	// é•œåƒ
 		QRcode = Register::getQRcode(capt_qr);
 		tm_getQRcode.stop();
 		putText(capt_qr, cv::format("FPS : %.2f", (float)tm_getQRcode.getFPS()), cv::Point(0, 15), cv::FONT_HERSHEY_COMPLEX, 0.5, cv::Scalar(0, 0, 255), 1);
@@ -140,13 +140,13 @@ int Register::registFaceByQRcode(cv::Mat face) {
 }
 
 /*
- * ÈËÁ³×¢²á£¨ÊÖ¶¯£©
- * @author ĞìÕÕ½Ü
+ * äººè„¸æ³¨å†Œï¼ˆæ‰‹åŠ¨ï¼‰
+ * @author å¾ç…§æ°
  * @date 2022/5/24
  */
 int Register::registFaceByInput(cv::Mat face) {
 	std::string face_name;
-	std::cout << "Çë×¢²á´ËÁ³£º";
+	std::cout << "è¯·æ³¨å†Œæ­¤è„¸ï¼š";
 	std::cin >> face_name;
 	imwrite("./data/registFace/" + face_name + ".jpg", face);
 	FaceAlgo::registFace(face, face_name);
