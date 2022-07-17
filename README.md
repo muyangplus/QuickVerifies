@@ -1,5 +1,7 @@
-# QuickVerifies
+<div align="center">
+  <h3><a href="https://muyangplus.github.io/2022/07/16/12/">QuickVerifies</a></h3>
+  <p><em>ä¸€ä¸ªåŸºäº OpenCV 4.5.5 çš„äººè„¸è¯†åˆ«éªŒè¯ç³»ç»Ÿ</em></p>
+</div>
 
-¸ü¶àĞÅÏ¢£º[ÎÒµÄ²©¿Í](https://muyangplus.github.io/2022/07/16/12/)
 
 
