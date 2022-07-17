@@ -1,3 +1,11 @@
+# Program
+data/registFace/*
+data/temp/*
+
+# IDE
+.vs
+out
+
 # Prerequisites
 *.d
 
