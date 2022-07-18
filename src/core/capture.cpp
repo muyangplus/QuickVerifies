@@ -40,7 +40,7 @@ int Capture::initCapture(int capture_id, bool debug) {
  * @author 徐照杰
  * @date 2022/6/3
  */
-int Capture::recognition(int capture_id, bool debug) {
+int Capture::recognition(int capture_id, bool windows, bool debug) {
 	bool face_on = false;
 	bool matchedFace_on = false;
 	bool QRcode_on = false;
@@ -64,7 +64,7 @@ int Capture::recognition(int capture_id, bool debug) {
 			// 如果结果为空，说明没有找到人脸
 			tm.stop();
 			putText(capt, cv::format("FPS : %.2f", (float)tm.getFPS()), cv::Point(0, 15), cv::FONT_HERSHEY_COMPLEX, 0.5, cv::Scalar(0, 0, 255), 1);
-			cv::imshow("capt", capt);
+			if (windows) cv::imshow("capt", capt);
 			continue;
 		}
 		int x = std::max((int)mask_result[0], 0);
@@ -84,7 +84,7 @@ int Capture::recognition(int capture_id, bool debug) {
 			resize(face, face, { 200 , 300 });
 			//cout << "rows:" << face.rows << ",cols:" << face.cols << endl;
 			face_on = true;
-			imshow("face", face);
+			if (windows) imshow("face", face);
 			FaceAlgo::detectFace(face, infoList);
 			FaceAlgo::matchFace(face, infoList, true);
 		}
@@ -97,7 +97,7 @@ int Capture::recognition(int capture_id, bool debug) {
 			//如果没有识别到人
 			tm.stop();
 			putText(capt, cv::format("FPS : %.2f", (float)tm.getFPS()), cv::Point(0, 15), cv::FONT_HERSHEY_COMPLEX, 0.5, cv::Scalar(0, 0, 255), 1);
-			cv::imshow("capt", capt);
+			if (windows) cv::imshow("capt", capt);
 			infoList.clear();
 			continue;
 		}
@@ -109,7 +109,7 @@ int Capture::recognition(int capture_id, bool debug) {
 				matchedFace_on = false;
 				cv::destroyWindow("matchedFace");
 			}
-			if (5 == unknown_times) {
+			if (100 == unknown_times) {
 				tm.stop();
 				//Register::registFaceByQRcode(face);
 				Register::registFaceByInput(face);
@@ -120,7 +120,7 @@ int Capture::recognition(int capture_id, bool debug) {
 		else {
 			unknown_times = 0;
 			matchedFace_on = true;
-			cv::imshow("matchedFace", cv::imread("./data/registFace/" + infoList[0]->name + ".jpg"));
+			if (windows) cv::imshow("matchedFace", cv::imread("./data/registFace/" + infoList[0]->name + ".jpg"));
 		}
 
 		if (result.empty()) {
@@ -145,7 +145,7 @@ int Capture::recognition(int capture_id, bool debug) {
 		result.clear();
 		tm.stop();
 		putText(capt, cv::format("FPS : %.2f", (float)tm.getFPS()), cv::Point(0, 15), cv::FONT_HERSHEY_COMPLEX, 0.5, cv::Scalar(0, 0, 255), 1);
-		cv::imshow("capt", capt);
+		if (windows) cv::imshow("capt", capt);
 		infoList.clear();
 	}
 	capture.release();

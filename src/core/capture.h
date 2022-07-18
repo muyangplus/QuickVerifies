@@ -11,7 +11,7 @@
 class Capture {
 public:
 	static int initCapture(int capture_id, bool debug);
-	static int recognition(int capture_id, bool debug);
+	static int recognition(int capture_id, bool windows, bool debug);
 	static cv::Mat getCapt();
 };
 
