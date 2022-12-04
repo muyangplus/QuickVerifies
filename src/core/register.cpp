@@ -1,4 +1,4 @@
-// C++
+﻿// C++
 #include <iostream>
 // OpenCV
 #include <opencv.hpp>
@@ -146,12 +146,15 @@ int Register::registFaceByQRcode(cv::Mat face) {
  */
 int Register::registFaceByInput(cv::Mat face) {
 	std::string face_name;
-	std::cout << "请注册此脸：";
+	std::cout << "请注册此脸:";
 	std::cin >> face_name;
+	if ("0" == face_name) {
+		return 0;
+	}
 	imwrite("./data/registFace/" + face_name + ".jpg", face);
 	FaceAlgo::registFace(face, face_name);
 	std::cout << "registFace : " << face_name << std::endl;
-	return 0;
+	return 1;
 }
 
 

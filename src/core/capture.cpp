@@ -1,4 +1,4 @@
-// C++
+﻿// C++
 #include <iostream>
 // OpenCV
 #include <opencv.hpp>
@@ -109,7 +109,7 @@ int Capture::recognition(int capture_id, bool windows, bool debug) {
 				matchedFace_on = false;
 				cv::destroyWindow("matchedFace");
 			}
-			if (100 == unknown_times) {
+			if (50 == unknown_times) {
 				tm.stop();
 				//Register::registFaceByQRcode(face);
 				Register::registFaceByInput(face);
@@ -147,6 +147,11 @@ int Capture::recognition(int capture_id, bool windows, bool debug) {
 		putText(capt, cv::format("FPS : %.2f", (float)tm.getFPS()), cv::Point(0, 15), cv::FONT_HERSHEY_COMPLEX, 0.5, cv::Scalar(0, 0, 255), 1);
 		if (windows) cv::imshow("capt", capt);
 		infoList.clear();
+
+		// 时间修证
+		//if (1000 > tm.getAvgTimeMilli()) {
+		//	cv::waitKey(1000 - tm.getAvgTimeMilli());
+		//}
 	}
 	capture.release();
 	cv::destroyAllWindows();

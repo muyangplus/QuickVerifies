@@ -1,9 +1,10 @@
-// C++
+﻿// C++
 #include <iostream>
 // OpenCV
 #include <opencv.hpp>
 // Self
 #include "src/core/face_recognize.h"
+#include "src/core/result_back.h"
 
 std::map<std::string, cv::Mat> face_models;
 cv::Ptr<cv::FaceDetectorYN> faceDetector = nullptr;
@@ -66,11 +67,9 @@ void FaceAlgo::matchFace(cv::Mat& frame, std::vector<std::shared_ptr<faceInfo>>&
 		if ((max_cosine > cosine_similar_thresh) && (min_dist < l2norm_similar_thresh)) {
 			face->name.clear();
 			face->name.append(matchedName);
-			std::cout << "matchedName : " << matchedName << std::endl;
+			
 		}
-		else {
-			std::cout << "matchedName : Unkonwn" << std::endl;
-		}
+		ResultBack::matchedFace(matchedName);
 	}
 }
 

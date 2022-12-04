@@ -1,4 +1,4 @@
-#pragma 
+﻿#pragma once
 
 // OpenCV
 #include <opencv.hpp>

@@ -34,12 +34,14 @@ include_directories(${OpenCV_INCLUDE_DIRS}/opencv2)
 # 资源文件
 set(SOURCE_FILES
 	src/core/capture.h
+	src/core/chcp.h
 	src/core/register.h
 	src/core/face_recognize.h
 	src/core/mask_recognize.h
 	src/core/result_back.h
 	
 	src/core/capture.cpp
+	src/core/chcp.cpp
 	src/core/register.cpp
 	src/core/face_recognize.cpp
 	src/core/mask_recognize.cpp
